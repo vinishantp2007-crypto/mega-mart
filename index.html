@@ -1,0 +1,669 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MegaMart</title>
+
+<!-- Bootstrap -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+<!-- Font Awesome -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+<style>
+/* ================= COMMON ================= */
+body{
+  font-family: 'Poppins', sans-serif;
+  background:#f5f7fa;
+  margin:0;
+}
+
+/* ================= TOP BAR ================= */
+.top-bar{
+  background:#f1f1f1;
+  padding:6px 20px;
+  font-size:13px;
+  display:flex;
+  justify-content:space-between;
+  color:#555;
+}
+.top-right span{
+  margin-left:15px;
+  cursor:pointer;
+}
+
+/* ================= NAVBAR ================= */
+.navbar{
+  display:grid;
+  grid-template-columns:auto 1fr auto;
+  align-items:center;
+  padding:15px 20px;
+  gap:20px;
+  background:#fff;
+  box-shadow:0 2px 8px rgba(0,0,0,0.08);
+}
+
+.nav-left{
+  display:flex;
+  align-items:center;
+  gap:10px;
+}
+
+.menu-icon{
+  font-size:20px;
+  cursor:pointer;
+}
+
+.logo{
+  color:#0d6efd;
+  font-weight:700;
+}
+
+/* ================= SEARCH BAR ================= */
+.search-wrapper{
+  max-width:650px;
+  margin:auto;
+  padding:4px;
+  border-radius:50px;
+  background:linear-gradient(135deg,#0d6efd,#1aa3a3);
+}
+
+.search-bar{
+  background:#fff;
+  border-radius:50px;
+  display:flex;
+  align-items:center;
+  padding:8px 14px;
+}
+
+.search-bar i{
+  color:#0d6efd;
+  font-size:18px;
+}
+
+.search-bar input{
+  border:none;
+  outline:none;
+  width:100%;
+  padding-left:10px;
+  font-size:15px;
+}
+
+.search-btn{
+  background:#0d6efd;
+  color:#fff;
+  border:none;
+  padding:7px 18px;
+  border-radius:30px;
+  font-weight:500;
+  transition:0.3s;
+}
+
+.search-btn:hover{
+  background:#1aa3a3;
+}
+
+/* ================= RIGHT NAV ================= */
+.nav-right{
+  display:flex;
+  gap:18px;
+}
+.nav-item{
+  display:flex;
+  align-items:center;
+  gap:6px;
+  cursor:pointer;
+  font-size:14px;
+}
+
+/* ================= CATEGORY BAR ================= */
+.category-bar{
+  display:flex;
+  gap:10px;
+  padding:12px 20px;
+  overflow-x:auto;
+  background:#fff;
+}
+.category-bar button{
+  border:none;
+  background:#eee;
+  padding:8px 14px;
+  border-radius:50px;
+  cursor:pointer;
+}
+.category-bar .active{
+  background:#0d6efd;
+  color:#fff;
+}
+
+/* ================= SLIDER ================= */
+.slider{
+  width:90%;
+  margin:40px auto;
+  overflow:hidden;
+  border-radius:15px;
+  position:relative;
+}
+
+.slides{
+  display:flex;
+  transition:0.6s;
+}
+
+.slide{
+  min-width:100%;
+  height:280px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:40px;
+  background:linear-gradient(135deg,#020024,#2c2c68,#00d4ff);
+  color:#fff;
+}
+
+.slide img{
+  width:220px;
+}
+
+.prev,.next{
+  position:absolute;
+  top:50%;
+  transform:translateY(-50%);
+  border:none;
+  background:rgba(0,0,0,0.4);
+  color:#fff;
+  padding:10px 14px;
+  border-radius:50%;
+  cursor:pointer;
+}
+
+
+.prev{left:15px;}
+.next{right:15px;}
+
+/* ================= SECTION ================= */
+
+body {
+  background: #f5f7fa;
+  font-family: Arial, sans-serif;
+
+}
+.smartphones {
+  padding: 40px 20px;
+}
+
+.phone-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 20px;
+}
+
+.phone-card {
+  position: relative;
+  background: #fff;
+  border-radius: 12px;
+  padding: 20px;
+  text-align: center;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.12);
+  transition: 0.3s;
+  cursor: pointer;
+}
+
+.phone-card img {
+  width: 110px;
+  margin-bottom: 15px;
+}
+
+.phone-card h4 {
+  font-size: 16px;
+  margin-bottom: 6px;
+}
+
+.price {
+  font-size: 15px;
+  font-weight: 600;
+  color: #0d6efd;
+}
+
+.price del {
+  font-size: 13px;
+  color: #777;
+  margin-left: 5px;
+}
+
+.offer-badge {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  background: #ef3343;
+  color: #fff;
+  font-size: 12px;
+  padding: 4px 8px;
+  border-radius: 6px;
+}
+
+.phone-card:hover {
+  transform: translateY(-8px);
+  
+}
+.discount {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  background: #0d6efd;
+  color: white;
+  font-size: 12px;
+  padding: 2px 6px;
+  border-radius: 5px;
+}
+
+.category-box {
+  background: rgb(230, 223, 223);
+  padding: 15px;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.footer {
+  background: #0d6efd;
+  color: white;
+  padding: 20px;
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+  background: #f5f7fa;
+}
+
+/* Common */
+.section-title {
+  text-align: center;
+  margin-bottom: 30px;
+  font-size: 24px;
+  font-weight: 600;
+}
+
+/* Top Categories */
+.top-categories {
+  padding: 50px 20px;
+}
+
+.category-container {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 30px;
+}
+
+.category-card {
+  width: 120px;
+  height: 120px;
+  background: #fff;
+  border-radius: 60%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+  cursor: pointer;
+  transition: 0.4s;
+}
+
+.category-card img {
+  width: 60px;
+}
+
+.category-card p {
+  margin-top: 10px;
+  font-size: 16px;
+  font-weight: 500;
+}
+
+.category-card:hover {
+  transform: translateY(-10px);
+  background: #0d6efd;
+  color: #fff;
+}
+
+/* Daily Essentials */
+.daily-essentials {
+  padding: 40px 20px;
+}
+
+.essentials-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 20px;
+}
+
+.essential-card {
+  background: #e7dfe5;
+  border-radius: 12px;
+  text-align: center;
+  padding: 20px;
+  box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+  transition: 0.3s;
+}
+
+.essential-card img {
+  width: 80px;
+  margin-bottom: 10px;
+}
+
+.essential-card h4 {
+  font-size: 16px;
+  margin-bottom: 5px;
+}
+
+.essential-card span {
+  color: green;
+  font-size: 15px;
+  font-weight: 600;
+}
+
+.essential-card:hover {
+  transform: scale(1.05);
+  background: #e282b5;
+}
+
+
+
+
+/* ================= FOOTER ================= */
+.footer{
+  background:linear-gradient(135deg,#1e88e5,#26c6da);
+  color:#fff;
+  padding:40px 20px;
+  margin-top:50px;
+}
+
+.footer-container{
+  max-width:1200px;
+  margin:auto;
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+  gap:30px;
+}
+
+.footer-bottom{
+  text-align:center;
+  border-top:1px solid rgba(255,255,255,0.4);
+  margin-top:30px;
+  padding-top:15px;
+  font-size:14px;
+}
+
+/* ================= MOBILE ================= */
+@media(max-width:768px){
+  .search-wrapper{margin:10px;}
+  .top-right{display:none;}
+}
+</style>
+</head>
+
+<body>
+
+<!-- TOP BAR -->
+<div class="top-bar">
+  <span>Welcome to worldwide MegaMart!</span>
+  <div class="top-right">
+    <span><i class="fa fa-location-dot"></i> Deliver to 423651</span>
+    <span><i class="fa fa-truck"></i> Track Order</span>
+  </div>
+</div>
+
+<!-- NAVBAR -->
+<header class="navbar">
+  <div class="nav-left">
+    <i class="fa fa-bars menu-icon"></i>
+    <h3 class="logo">MegaMart</h3>
+  </div>
+
+  <!-- SEARCH -->
+  <div class="search-wrapper">
+    <div class="search-bar">
+      <i class="fa fa-search"></i>
+      <input type="text" placeholder="Search groceries....">
+      <button class="search-btn">Search</button>
+    </div>
+  </div>
+
+  <div class="nav-right">
+    
+    <div class="nav-item"><i class="fa fa-cart-shopping"></i> Cart</div>
+    <!-- Sign In Button -->
+      
+    </div>
+  </div>
+</header>
+
+<!-- CATEGORY -->
+<div class="category-bar">
+    <a href="login.html" class="btn btn-outline-primary">Sign In</a>
+  <button class="active">Groceries</button>
+  <button>Electronics</button>
+  <button>Fashion</button>
+  <button>Mobiles</button>
+  <button>Beauty</button>
+  
+
+</div>
+
+<!-- SLIDER -->
+<div class="slider">
+  <div class="slides">
+    <div class="slide">
+      <div>
+        <p>Best Deals on Watches</p>
+        <h2>SMART WEARABLES</h2>
+        <span>UP TO 80% OFF</span>
+      </div>
+      <img src="watch1.webp">
+    </div>
+
+    <div class="slide">
+      <div>
+        <p>Latest Smartphones</p>
+        <h2>NEW ARRIVALS</h2>
+        <span>UP TO 60% OFF</span>
+      </div>
+      <img src="watch2.webp">
+    </div>
+
+    <div class="slide">
+      <div>
+        <p>Premium Smart Watches</p>
+        <h2>STYLE & TECH</h2>
+        <span>UP TO 60% OFF</span>
+      </div>
+      <img src="watch4.webp">
+    </div>
+  </div>
+
+  <button class="prev">❮</button>
+  <button class="next">❯</button>
+</div>
+
+<!-- ===== SMARTPHONES ===== -->
+<section class="smartphones">
+  <h2 class="section-title">Grab the Best Deals on Smartphones</h2>
+
+  <div class="phone-container">
+    <div class="phone-card">
+      <span class="offer-badge">20% OFF</span>
+      <img src="phone1.webp" alt="">
+      <h4>Galaxy M13</h4>
+      <p class="price">₹12,999 <del>₹15,999</del></p>
+    </div>
+
+    <div class="phone-card">
+      <span class="offer-badge">25% OFF</span>
+      <img src="phone2.webp" alt="">
+      <h4>iphone 16 pro </h4>
+      <p class="price">₹50,499 <del>₹58,999</del></p>
+    </div>
+
+    <div class="phone-card">
+      <span class="offer-badge">30% OFF</span>
+      <img src="phone8.webp" alt="">
+      <h4>iphone 15 pro</h4>
+      <p class="price">₹45,999 <del>₹56,999</del></p>
+    </div>
+
+    <div class="phone-card">
+      <span class="offer-badge">15% OFF</span>
+      <img src="phone4.webp" alt="">
+      <h4>iQOO Z6</h4>
+      <p class="price">₹17,999 <del>₹21,999</del></p>
+    </div>
+  </div>
+</section>
+
+  <h2 class="section-title">Mega  Deals on Electronics</h2>
+
+  <div class="phone-container">
+    <div class="phone-card">
+      <span class="offer-badge">20% OFF</span>
+      <img src="tv1.webp" alt="">
+      <h4> LG , Full HD smart  TV</h4>
+      <p class="price">₹42,999 <del>₹55,999</del></p>
+    </div>
+
+    <div class="phone-card">
+      <span class="offer-badge">25% OFF</span>
+      <img src="washing machine1.webp" alt="">
+      <h4>whirlpool ,Top Load  Washing machine</h4>
+      <p class="price">₹18,499 <del>₹25,999</del></p>
+    </div>
+
+    <div class="phone-card">
+      <span class="offer-badge">30% OFF</span>
+      <img src="fridge1.webp" alt="">
+      <h4>Realme , double door fridge</h4>
+      <p class="price">₹30,999 <del>₹46,999</del></p>
+    </div>
+
+    <div class="phone-card">
+      <span class="offer-badge">15% OFF</span>
+      <img src="air fryer.webp" alt="">
+      <h4>iQ , Air fryer</h4>
+      <p class="price">₹7,999 <del>₹8,999</del></p>
+    </div>
+  </div>
+</section>
+<!-- Top Categories Section -->
+<section class="top-categories">
+  <h2 class="section-title">Shop From Top Categories</h2>
+
+  <div class="category-container">
+    <div class="category-card">
+      <img src="iphone 17.webp" alt="">
+      <p>Mobiles</p>
+    </div>
+    <div class="category-card">
+      <img src="cosmetic.webp" alt="">
+      <p>Cosmetics</p>
+    </div>
+    <div class="category-card">
+      <img src="air fryer.webp" alt="">
+      <p>Electronics</p>
+    </div>
+    <div class="category-card">
+      <img src="furniture.webp" alt="">
+      <p>Furniture</p>
+    </div>
+    <div class="category-card">
+      <img src="watch1.webp" alt="">
+      <p>Watches</p>
+    </div>
+    <div class="category-card">
+      <img src="decor.webp" alt="">
+      <p>Decor</p>
+    </div>
+  </div>
+</section>
+
+
+<!-- Daily Essentials Section -->
+<section class="daily-essentials">
+  <h2 class="section-title">Daily Essentials</h2>
+
+  <div class="essentials-container">
+    <div class="essential-card">
+      <img src="grocery.webp" alt="">
+      <h4>Grocery</h4>
+      <span>UP TO 50% OFF</span>
+    </div>
+
+    <div class="essential-card">
+      <img src="veg.webp" alt="">
+      <h4>Vegetables</h4>
+      <span>UP TO 40% OFF</span>
+    </div>
+
+    <div class="essential-card">
+      <img src="fruits.webp" alt="">
+      <h4>Fruits</h4>
+      <span>UP TO 30% OFF</span>
+    </div>
+
+    <div class="essential-card">
+      <img src="meat.webp" alt="">
+      <h4>Meat</h4>
+      <span>UP TO 25% OFF</span>
+    </div>
+
+    <div class="essential-card">
+      <img src="dairy.webp" alt="">
+      <h4>Dairy</h4>
+      <span>UP TO 20% OFF</span>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="footer-container">
+    <div>
+      <h3>MegaMart</h3>
+      <p>Call: +91 9629443659</p>
+    </div>
+    <div>
+      <h4>Categories</h4>
+      <p>Mobiles</p>
+      <p>Electronics</p>
+      <p>Groceries</p>
+    </div>
+    <div>
+      <h4>Policies</h4>
+      <p>Privacy Policy</p>
+      <p>Terms & Conditions</p>
+    </div>
+  </div>
+
+  <div class="footer-bottom">
+    © 2025 MegaMart. All rights reserved.
+  </div>
+</footer>
+
+<script>
+const slides=document.querySelector(".slides");
+const slide=document.querySelectorAll(".slide");
+let index=0;
+
+document.querySelector(".next").onclick=()=>{
+  index=(index+1)%slide.length;
+  slides.style.transform=`translateX(-${index*100}%)`;
+};
+
+document.querySelector(".prev").onclick=()=>{
+  index=(index-1+slide.length)%slide.length;
+  slides.style.transform=`translateX(-${index*100}%)`;
+};
+
+setInterval(()=>{document.querySelector(".next").click()},4000);
+</script>
+
+</body>
+</html>
